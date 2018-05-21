@@ -33,16 +33,16 @@ As stated in the [PSR-15 Meta Docs](https://www.php-fig.org/psr/psr-15/#13-gener
 As such, the `Http\HttpKernel` object accepts a "fallback handler" which is an instance of `Psr\Http\Server\RequestHandlerInterface` to call when all middleware objects have been exhausted. Each middleware interface is also passed an `Http\HandlerProxy` proxy object that exposes access to the `HttpKernel::handle()` method. If a middleware determines that it cannot delegate to its factory to create a response, the kernel handle method is called again, which directs the request to the next middleware, or executes the fallback handler. This is described in just a few lines in the `Http\HttpKernel` class:
 
 ```php
-    public function handle(ServerRequestInterface $request) : ResponseInterface
-	{
-	    // if we have processed all middleware, invoke fallback handler
-		if ($this->queue->processed()) {
-			return $this->fallbackHandler->handle($request);
-		}
-        
-        // if not, invoke the next middleware
-		return $this->queue->process($request, $this->proxy);
+public function handle(ServerRequestInterface $request) : ResponseInterface
+{
+    // if we have processed all middleware, invoke fallback handler
+	if ($this->queue->processed()) {
+		return $this->fallbackHandler->handle($request);
 	}
+
+// if not, invoke the next middleware
+	return $this->queue->process($request, $this->proxy);
+}
 ```
 
 This is also described in detail [here](https://www.php-fig.org/psr/psr-15/meta/#queue-based-request-handler).
