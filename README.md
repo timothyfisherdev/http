@@ -36,11 +36,11 @@ As such, the `Http\HttpKernel` object accepts a "fallback handler" which is an i
 public function handle(ServerRequestInterface $request) : ResponseInterface
 {
     // if we have processed all middleware, invoke fallback handler
-	if ($this->queue->processed()) {
-		return $this->fallbackHandler->handle($request);
-	}
+    if ($this->queue->processed()) {
+        return $this->fallbackHandler->handle($request);
+    }
 
-// if not, invoke the next middleware
+    // if not, invoke the next middleware
 	return $this->queue->process($request, $this->proxy);
 }
 ```
