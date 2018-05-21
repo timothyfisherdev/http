@@ -1,0 +1,36 @@
+{
+	"name": "timothyfisherdev/http",
+	"type": "library",
+	"description": "A very simple PSR-15/PSR-7 compliant model of the HTTP request-response lifecycle.",
+	"keywords": ["psr7", "psr15", "dispatcher", "http", "middleware"],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Timothy Fisher"
+		}
+	],
+	"require": {
+		"php": ">=7.1",
+		"psr/http-message": "^1.0",
+		"psr/http-server-middleware": "^1.0"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "^7.1"
+	},
+	"autoload": {
+		"psr-4": {
+			"Http\\": "src/"
+		},
+		"exclude-from-classmap": [
+			"/tests/"
+		]
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Http\\Test\\": "tests/"
+		}
+	},
+	"scripts": {
+		"test": "phpunit"
+	}
+}
