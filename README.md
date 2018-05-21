@@ -40,7 +40,7 @@ public function handle(ServerRequestInterface $request) : ResponseInterface
     }
 
     // if not, invoke the next middleware
-	return $this->queue->process($request, $this->proxy);
+    return $this->queue->process($request, $this->proxy);
 }
 ```
 
